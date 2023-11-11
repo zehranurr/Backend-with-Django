@@ -1,0 +1,97 @@
+
+{% extends "homebase.html" %}
+
+{% block title %} {{profile.user_name}} Profile {% endblock %}
+{% block keywords %} {{ setting.keywords }}{% endblock %}
+{% block description  %} {{ setting.description }} {% endblock %}
+
+{% block head   %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+{% block sidebar %}
+{% include "sidebar.html" %}
+{% endblock %}
+{% block body %}
+<div>
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px">
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="/">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">User Profile</p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <!-- Left Side (User Panel) -->
+                <div class="col-md-3">
+                    {% include "user_panel.html" %}
+                </div>
+                    
+             <div>
+    <!-- ... Your previous code ... -->
+
+    <!-- Right Side (User Info) -->
+    <div class="col-md-9">
+        <h1 style="border-bottom: 2px solid #000;">User information</h1>
+        <div class="content-section">
+            <div class="media">
+                <img src="{{ user.userprofile.image.url }}" style="height: 150px; border-radius: 45px">
+            </div>
+        </div>
+        <div class="container">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ user_form.username.label_tag }}
+                    {{ user_form.username }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.email.label_tag }}
+                    {{ user_form.email }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.first_name.label_tag }}
+                    {{ user_form.first_name }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.last_name.label_tag }}
+                    {{ user_form.last_name }}
+                </div>
+                <div class="form-group">
+                    {{ profile_form.phone.label_tag }}
+                    {{ profile_form.phone }}
+                </div>
+                <div class="form-group">
+                    {{ profile_form.address.label_tag }}
+                    {{ profile_form.address }}
+                </div>
+                <div class="form-group">
+                    {{ profile_form.city.label_tag }}
+                    {{ profile_form.city }}
+                </div>
+                <div class="form-group">
+                    {{ profile_form.country.label_tag }}
+                    {{ profile_form.country }}
+                </div>
+                <div class="form-group">
+                    {{ profile_form.image.label_tag }}
+                    {{ profile_form.image }}
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

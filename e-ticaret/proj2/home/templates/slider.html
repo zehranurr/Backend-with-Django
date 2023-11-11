@@ -1,0 +1,36 @@
+<div class="container-fluid mb-5" style="margin-top: -280px;">
+    <div class="row border-top px-xl-5">
+        <div class="col-lg-3 d-none d-lg-block">
+           
+        </div>
+        <div class="col-lg-9">
+            
+            <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    {% for rs in sliderdata %}
+                    <div class="carousel-item {% if forloop.first %}active{% endif %}" style="height: 410px;">
+                        <img class="img-fluid" src="{{ rs.image.url }}" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h5 class="text-light text-uppercase font-weight-medium mb-3">{{ rs.description }}</h5>
+                                <h5 class="display-4 text-white font-weight-semi-bold mb-4">{{ rs.title }}</h5>
+                                <a href="/product/{{ rs.id }}/{{ rs.slug}}/" class="btn btn-light py-2 px-3">Satın Al</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                    <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                        <span class="carousel-control-prev-icon mb-n2"></span>
+                    </div>
+                </a>
+                <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                    <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                        <span class="carousel-control-next-icon mb-n2"></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

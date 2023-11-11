@@ -1,0 +1,93 @@
+{% extends "homebase.html" %}
+
+{% block title %} {{profile.user_name}} Profile {% endblock %}
+{% block keywords %} {{ setting.keywords }}{% endblock %}
+{% block description  %} {{ setting.description }} {% endblock %}
+
+{% block head   %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+
+
+{% block sidebar %}{% include "sidebar.html" %}{% endblock %}
+{% block body %}
+
+
+<div>
+    <div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px">
+            <div class="d-inline-flex">
+                <p class="m-0"><a href="/">Home</a></p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">User Profile</p>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <!-- Left Side (User Panel) -->
+                <div class="col-md-3">
+                
+                    {% include "user_panel.html" %}
+
+
+
+
+                </div>
+
+                <!-- Right Side (User Info) -->
+                <div class="col-md-9">
+
+                <h1 style="border-bottom: 2px solid #000;">User information</h1>
+
+                    <table class="table table-bordered text-center mb-3">
+                        <tr>
+                    
+                            <th class="text-left">
+                                <a href="/user/update"  class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Update Profile</a><br><br><br>
+                                <a href="/user/password" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" >Change Password</a>
+                            </th>
+                            <td><img src="{{profile.image.url }}" alt="" style="border-radius: 45px; height:280px "></td>
+                        </tr> 
+                        <tr>
+                            <th class="bg-secondary text-dark">Name Surname</th>
+                            <td class="align-middle text-left">{{profile.user_name}}</td>
+                        </tr> 
+                        
+                        <tr>
+                            <th class="bg-secondary text-dark">Email</th>
+                            <th class="align-middle text-left">{{ profile.user.email }}</th>
+                        </tr>
+                        <tr>
+
+                            <th class="bg-secondary text-dark">Phone</th>
+                            <th class="align-middle text-left">{{profile.phone}}</th>
+                        </tr>
+                        <tr>
+
+                            <th class="bg-secondary text-dark">Address</th>
+                            <th class="align-middle text-left">{{profile.address }}</th>
+                        </tr>
+                        <tr>
+                            <th class="bg-secondary text-dark">City</th>
+                            <th class="align-middle text-left">{{profile.city}}</th>
+                        </tr>
+                        <tr>
+
+                            <th class="bg-secondary text-dark">Country</th>
+                            <th class="align-middle text-left">{{profile.country }}</th>
+                        </tr>
+                    
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

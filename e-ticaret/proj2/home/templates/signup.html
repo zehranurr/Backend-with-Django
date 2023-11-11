@@ -1,0 +1,64 @@
+{% extends "homebase.html" %}
+
+{% block title %} Sign Up{{ setting.company }} {% endblock %}
+{% block keywords %} {{ setting.keywords }}{% endblock %}
+{% block description  %} {{ setting.description }} {% endblock %}
+
+{% block head   %}
+<link rel='shortcut icon' type='image/x-icon' href='{{ setting.icon.url }}'/>
+{% endblock %}
+
+
+
+{% block sidebar %}{% include "sidebar.html" %}{% endblock %}
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li style="margin-right: 10px;"><a href="/">Anasayfa</a></li>
+                <li class="active">Sign Up</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="col-md-12">
+            <div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <p>
+                            {{ field.label_tag}}<br>
+                            {{ field }}
+                            {%  if field.help_text  %}
+                                <small style="color:grey">{{  field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <p style="color :red">{{error}}</p>
+                            {%endfor%}   
+                        </p>
+                    {% endfor %}
+                    <button type="submit">Sign Up</button>                             
+                </form>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
